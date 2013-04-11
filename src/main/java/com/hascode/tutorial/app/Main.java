@@ -3,25 +3,28 @@ package com.hascode.tutorial.app;
 import static com.carrotsearch.sizeof.RamUsageEstimator.sizeOf;
 
 import java.util.List;
+import java.util.Vector;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.xml.bind.JAXBException;
 
 import com.hascode.tutorial.dto.SimpleBook;
 import com.hascode.tutorial.entity.Book;
+import com.thoughtworks.xstream.XStream;
 
 public class Main {
 	private EntityManagerFactory emf;
 	private EntityManager em;
 	private EntityTransaction tx;
 
-	public static void main(final String[] args) {
+	public static void main(final String[] args) throws JAXBException {
 		new Main().run();
 	}
 
-	private void run() {
+	private void run() throws JAXBException {
 		emf = Persistence.createEntityManagerFactory("hascode-manual");
 		em = emf.createEntityManager();
 		tx = em.getTransaction();
@@ -48,8 +51,18 @@ public class Main {
 		List<SimpleBook> bookDtos = em.createNamedQuery(
 				"Book.findAll.toSimpleBook", SimpleBook.class).getResultList();
 		System.out.println(bookDtos.size()
-				+ " Book entities' guessed size is: " + sizeOf(bookDtos));
+				+ " SimpleBook entities' guessed size is: " + sizeOf(bookDtos));
+		printAsJson(books);
+		printAsJson(bookDtos);
 		em.close();
 		emf.close();
+	}
+
+	private <T> void printAsJson(final List<T> list) throws JAXBException {
+		XStream xs = new XStream();
+		xs.alias("books", Vector.class);
+		xs.alias("book", Book.class);
+		xs.alias("book", SimpleBook.class);
+		System.out.println("serialized: " + xs.toXML(list));
 	}
 }

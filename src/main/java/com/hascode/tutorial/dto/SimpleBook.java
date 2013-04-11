@@ -4,9 +4,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "book")
 public class SimpleBook {
-	private final Long id;
-	private final String title;
-	private final String author;
+	private Long id;
+	private String title;
+	private String author;
+
+	public SimpleBook() {
+	}
 
 	public SimpleBook(final Long id, final String title, final String author) {
 		this.id = id;
