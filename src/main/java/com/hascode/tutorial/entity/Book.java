@@ -5,14 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b"),
 		@NamedQuery(name = "Book.countAll", query = "SELECT COUNT(b) FROM Book b"),
 		@NamedQuery(name = "Book.findAll.toSimpleBook", query = "SELECT NEW com.hascode.tutorial.dto.SimpleBook(b.id, b.title, b.author) FROM Book b") })
-@XmlRootElement
 public class Book {
 	@Id
 	@GeneratedValue

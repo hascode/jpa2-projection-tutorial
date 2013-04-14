@@ -6,11 +6,11 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>com.hascode.tutorial.entity.Book</class>
 		<properties>
-			<property name="eclipselink.target-database" value="DERBY" />
-			<property name="eclipselink.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
-			<property name="eclipselink.jdbc.url" value="jdbc:derby:test2db;create=true" />
-			<property name="eclipselink.jdbc.user" value="APPT" />
-			<property name="eclipselink.jdbc.password" value="APPT" />
+			<property name="javax.persistence.target-database" value="DERBY" />
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:test2db;create=true" />
+			<property name="javax.persistence.jdbc.user" value="APPT" />
+			<property name="javax.persistence.jdbc.password" value="APPT" />
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
 			<property name="eclipselink.logging.level" value="FINE" />
 		</properties>

@@ -1,15 +1,9 @@
 package com.hascode.tutorial.dto;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement(name = "book")
 public class SimpleBook {
-	private Long id;
-	private String title;
-	private String author;
-
-	public SimpleBook() {
-	}
+	private final Long id;
+	private final String title;
+	private final String author;
 
 	public SimpleBook(final Long id, final String title, final String author) {
 		this.id = id;

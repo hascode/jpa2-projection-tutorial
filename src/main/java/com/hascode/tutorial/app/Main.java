@@ -52,13 +52,13 @@ public class Main {
 				"Book.findAll.toSimpleBook", SimpleBook.class).getResultList();
 		System.out.println(bookDtos.size()
 				+ " SimpleBook entities' guessed size is: " + sizeOf(bookDtos));
-		printAsJson(books);
-		printAsJson(bookDtos);
+		printAsXml(books);
+		printAsXml(bookDtos);
 		em.close();
 		emf.close();
 	}
 
-	private <T> void printAsJson(final List<T> list) throws JAXBException {
+	private <T> void printAsXml(final List<T> list) throws JAXBException {
 		XStream xs = new XStream();
 		xs.alias("books", Vector.class);
 		xs.alias("book", Book.class);
